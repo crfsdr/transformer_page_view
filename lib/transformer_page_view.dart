@@ -140,7 +140,7 @@ class TransformerPageController extends PageController {
     return renderIndex;
   }
 
-  double? get realPage => super.page ?? 0.0;
+  double get realPage => !position.hasContentDimensions ? 0.0 : super.page ?? 0.0;
 
   static _getRenderPageFromRealPage(double? page, bool loop, int? itemCount, bool reverse) {
     double? renderPage;
@@ -357,9 +357,9 @@ class _TransformerPageViewState extends State<TransformerPageView> {
           double? page = _pageController!.realPage;
 
           if (_transformer!.reverse) {
-            position = page! - index;
+            position = page - index;
           } else {
-            position = index - page!;
+            position = index - page;
           }
           position *= widget.viewportFraction;
 

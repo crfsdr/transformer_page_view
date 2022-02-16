@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:transformer_page_view/transformer_page_view.dart';
 
-import 'package:flutter/cupertino.dart';
-
 // 1111111 !!!!!!
 
 void main() => runApp(new MyApp());
@@ -24,9 +22,9 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  final String? title;
 
   @override
   _MyHomePageState createState() => new _MyHomePageState();
@@ -43,8 +41,7 @@ class ImageTest extends StatelessWidget {
     return new TransformerPageView(
         loop: true,
         viewportFraction: 0.8,
-        transformer: new PageTransformerBuilder(
-            builder: (Widget child, TransformInfo info) {
+        transformer: new PageTransformerBuilder(builder: (Widget child, TransformInfo info) {
           return new Padding(
             padding: new EdgeInsets.all(10.0),
             child: new Material(
@@ -55,8 +52,8 @@ class ImageTest extends StatelessWidget {
                 fit: StackFit.expand,
                 children: <Widget>[
                   new ParallaxImage.asset(
-                    images[info.index],
-                    position: info.position,
+                    images[info.index!],
+                    position: info.position!,
                   ),
                   new DecoratedBox(
                     decoration: new BoxDecoration(
@@ -77,19 +74,18 @@ class ImageTest extends StatelessWidget {
                       children: <Widget>[
                         new ParallaxContainer(
                           child: new Text(
-                            text0[info.index],
+                            text0[info.index!],
                             style: new TextStyle(fontSize: 15.0),
                           ),
-                          position: info.position,
+                          position: info.position!,
                           translationFactor: 300.0,
                         ),
                         new SizedBox(
                           height: 8.0,
                         ),
                         new ParallaxContainer(
-                          child: new Text(text1[info.index],
-                              style: new TextStyle(fontSize: 18.0)),
-                          position: info.position,
+                          child: new Text(text1[info.index!], style: new TextStyle(fontSize: 18.0)),
+                          position: info.position!,
                           translationFactor: 200.0,
                         ),
                       ],
@@ -111,9 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      body: new Padding(
-          padding: new EdgeInsets.fromLTRB(10.0, 40.0, 10.0, 30.0),
-          child: new ImageTest()),
+      body: new Padding(padding: new EdgeInsets.fromLTRB(10.0, 40.0, 10.0, 30.0), child: new ImageTest()),
     );
   }
 }

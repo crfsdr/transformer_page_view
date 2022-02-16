@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:transformer_page_view/transformer_page_view.dart';
 
-import 'package:flutter/cupertino.dart';
-
 // 1111111 !!!!!!
 
 void main() => runApp(new MyApp());
@@ -24,28 +22,18 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  final String? title;
 
   @override
   _MyHomePageState createState() => new _MyHomePageState();
 }
 
 class Welcome extends StatelessWidget {
-  final List<String> images = [
-    "assets/home.png",
-    "assets/good.png",
-    "assets/image.png",
-    "assets/edit.png"
-  ];
+  final List<String> images = ["assets/home.png", "assets/good.png", "assets/image.png", "assets/edit.png"];
 
-  final List<String> titles = [
-    "Welcome",
-    "Simple to use",
-    "Easy parallax",
-    "Customizable"
-  ];
+  final List<String> titles = ["Welcome", "Simple to use", "Easy parallax", "Customizable"];
   final List<String> subtitles = [
     "Flutter TransformerPageView, for welcome screen, banner, image catalog and more",
     "Simple api,easy to understand,powerful adn strong",
@@ -69,8 +57,7 @@ class Welcome extends StatelessWidget {
     return new TransformerPageView(
         index: index,
         loop: false,
-        transformer: new PageTransformerBuilder(
-            builder: (Widget child, TransformInfo info) {
+        transformer: new PageTransformerBuilder(builder: (Widget child, TransformInfo info) {
           //  print('==========');
           return new ParallaxColor(
             colors: backgroundColors,
@@ -79,28 +66,26 @@ class Welcome extends StatelessWidget {
               children: <Widget>[
                 new Expanded(
                     child: new ParallaxContainer(
-                  child: new Image.asset(images[info.index]),
-                  position: info.position,
+                  child: new Image.asset(images[info.index!]),
+                  position: info.position!,
                   opacityFactor: 1.0,
                   translationFactor: 400.0,
                 )),
                 new ParallaxContainer(
                   child: new Text(
-                    titles[info.index],
+                    titles[info.index!],
                     style: new TextStyle(fontSize: 30.0, color: Colors.white),
                     textAlign: TextAlign.center,
                   ),
-                  position: info.position,
+                  position: info.position!,
                   translationFactor: 100.0,
                 ),
                 new ParallaxContainer(
                   child: new Padding(
                       padding: new EdgeInsets.fromLTRB(40.0, 30.0, 40.0, 50.0),
-                      child: new Text(subtitles[info.index],
-                          textAlign: TextAlign.center,
-                          style: new TextStyle(
-                              fontSize: 13.0, color: Colors.white))),
-                  position: info.position,
+                      child: new Text(subtitles[info.index!],
+                          textAlign: TextAlign.center, style: new TextStyle(fontSize: 13.0, color: Colors.white))),
+                  position: info.position!,
                   translationFactor: 50.0,
                 ),
               ],

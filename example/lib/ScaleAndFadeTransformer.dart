@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 
 import 'package:transformer_page_view/transformer_page_view.dart';
 
-import 'package:flutter/cupertino.dart';
-
 // 1111111 !!!!!!
 
 void main() => runApp(new MyApp());
@@ -31,9 +29,9 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  final String? title;
 
   @override
   _MyHomePageState createState() => new _MyHomePageState();
@@ -42,11 +40,7 @@ class MyHomePage extends StatefulWidget {
 class TestWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    List<Color> list = [
-      Colors.redAccent,
-      Colors.blueAccent,
-      Colors.greenAccent
-    ];
+    List<Color> list = [Colors.redAccent, Colors.blueAccent, Colors.greenAccent];
     return new TransformerPageView(
         loop: true,
         transformer: new ScaleAndFadeTransformer(),
